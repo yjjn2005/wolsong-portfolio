@@ -328,7 +328,7 @@ function paintLog() {
   const ytd = log.filter(x => String(x.d).startsWith(yr));
   const real = ytd.reduce((n, x) => n + (Number.isFinite(x.realized) ? x.realized : 0), 0), fees = ytd.reduce((n, x) => n + (x.fee || 0), 0);
   $('tr-tiles').innerHTML = '<div class="tile"><div class="tile-label">올해 매매 기록</div><div class="tile-value">' + ytd.length + '<span class="unit">건</span></div></div>' +
-    '<div class="tile"><div class="tile-label">올해 실현손익</div><div class="tile-value ' + (real > 0 ? 'up' : real < 0 ? 'down' : '') + '">' + signed(real) + '<span class="unit">원</span></div><div class="tile-note">매도 시 평균단가 기준 · 수수료·세금 차감</div></div>' +
+    '<div class="tile"><div class="tile-label">직접 입력 매매 실현손익(올해)</div><div class="tile-value ' + (real > 0 ? 'up' : real < 0 ? 'down' : '') + '">' + signed(real) + '<span class="unit">원</span></div><div class="tile-note">앱에 직접 입력한 매매 기준 · 증빙 자료의 기간 손익은 아래 카드 참조</div></div>' +
     '<div class="tile"><div class="tile-label">올해 수수료·세금</div><div class="tile-value">' + won(fees) + '<span class="unit">원</span></div></div>';
   const canUndo = !blocked() && store.undo && store.undo.raw;
   $('tr-log').innerHTML = '<div class="card-heading"><h3>매매 기록</h3>' + (canUndo ? '<button id="tr-undo" class="button subtle" type="button">마지막 매매 되돌리기</button>' : '') + '</div>' +
