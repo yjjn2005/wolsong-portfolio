@@ -22,6 +22,7 @@ function show() {
   b.title = '데이터 기준 ' + full(data.at) + ' · 눌러서 버전별 변경 내역 보기';
   b.hidden = false;
   b.onclick = () => { const p = $('ver-panel'), open = p.hidden; if (open) paint(); p.hidden = !open; b.setAttribute('aria-expanded', String(open)); };
+  const f = $('footer-ver'); if (f) f.textContent = '월송그룹 포트폴리오 앱 ' + data.cur + ' · ' + full(data.at);
 }
 function paint() {
   const p = $('ver-panel'), h = data.history;
